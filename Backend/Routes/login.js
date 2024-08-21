@@ -3,7 +3,7 @@ const cors = require("cors");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 const dotenv = require("dotenv");
-const { blacklist,authenticateToken } = require('../middleware/authMiddleware');
+const { blacklist, authenticateToken } = require('../middleware/authMiddleware');
 const { PrismaClient } = require('@prisma/client');
 
 const prisma = new PrismaClient();
@@ -13,7 +13,7 @@ dotenv.config();
 LoginRouter.use(cors());
 
 // Log in user and generate token
-LoginRouter.post('/', async (req, res) => {
+LoginRouter.post('/', authenticateToken ,async (req, res) => {
     const { email, password } = req.body;
 
     try {
