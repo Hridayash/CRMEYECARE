@@ -22,7 +22,7 @@ const Layout = ({ children }: LayoutProps) => {
           navigate('/login');
           throw new Error('No access token found');
         }
-        const response = await axios.get<{ username: string }>('http://localhost:3002/user/userInfo', {
+        const response = await axios.get<{ username: string }>('https://crmeyecare.onrender.com/user/userInfo', {
           headers: {
             Authorization: `Bearer ${token}`
           }

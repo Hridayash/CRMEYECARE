@@ -40,10 +40,10 @@ const Appointments = () => {
     try {
       const token = localStorage.getItem('accessToken');
       const [patientsResponse, doctorsResponse] = await Promise.all([
-        axios.get('http://localhost:3002/patients', {
+        axios.get('https://crmeyecare.onrender.com/patients', {
           headers: { Authorization: `Bearer ${token}` },
         }),
-        axios.get('http://localhost:3002/doctors', {
+        axios.get('https://crmeyecare.onrender.com/doctors', {
           headers: { Authorization: `Bearer ${token}` },
         }),
       ]);
@@ -57,7 +57,7 @@ const Appointments = () => {
   const fetchAppointmentData = async () => {
     try {
       const token = localStorage.getItem('accessToken');
-      const appointmentResponse = await axios.get('http://localhost:3002/appointments', {
+      const appointmentResponse = await axios.get('https://crmeyecare.onrender.com/appointments', {
         headers: { Authorization: `Bearer ${token}` },
       });
       setAppointments(appointmentResponse.data);
@@ -92,7 +92,7 @@ const Appointments = () => {
         date: new Date(formData.date).toISOString(),
       };
       const response = await axios.post<Appointment>(
-        'http://localhost:3002/appointments',
+        'https://crmeyecare.onrender.com/appointments',
         formattedData,
         {
           headers: { Authorization: `Bearer ${token}` },
@@ -117,7 +117,7 @@ const Appointments = () => {
       try {
         const token = localStorage.getItem('accessToken');
         const response = await axios.patch(
-          `http://localhost:3002/appointments/${rescheduleData.id}/reschedule`,
+          `https://crmeyecare.onrender.com/appointments/${rescheduleData.id}/reschedule`,
           { date: rescheduleData.date },
           {
             headers: { Authorization: `Bearer ${token}` },

@@ -25,7 +25,7 @@ export default function Login() {
     const submit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
-        axios.post('http://localhost:3002/login', user)
+        axios.post('https://crmeyecare.onrender.com/login', user)
             .then(result => {
                 const { accessToken } = result.data;
                 console.log(accessToken);

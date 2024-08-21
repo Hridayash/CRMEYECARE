@@ -39,7 +39,7 @@ export default function Signup() {
             return;
         }
 
-        axios.post('http://localhost:3002/user/createUser', userInfo)
+        axios.post('https://crmeyecare.onrender.com/user/createUser', userInfo)
             .then(result => {
                 console.log(result);
                 navigate("/login");

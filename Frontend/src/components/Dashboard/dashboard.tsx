@@ -62,7 +62,7 @@ const Dashboard = () => {
   const fetchDashboard = async () => {
     try {
       const token = localStorage.getItem('accessToken');
-      const response = await axios.get('http://localhost:3002/dashboard/', {
+      const response = await axios.get('https://crmeyecare.onrender.com/dashboard/', {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -97,7 +97,7 @@ const Dashboard = () => {
   const fetchAppointments = async () => {
     try {
       const token = localStorage.getItem('accessToken');
-      const response = await axios.get('http://localhost:3002/appointments', {
+      const response = await axios.get('https://crmeyecare.onrender.com/appointments', {
         headers: {
           Authorization: `Bearer ${token}`,
         },

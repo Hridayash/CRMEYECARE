@@ -44,7 +44,7 @@ const SalesManager: React.FC = () => {
   const fetchSales = async () => {
     try {
       const token = localStorage.getItem('accessToken');
-      const response = await axios.get<Sale[]>('http://localhost:3002/sales', {
+      const response = await axios.get<Sale[]>('https://crmeyecare.onrender.com/sales', {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -58,7 +58,7 @@ const SalesManager: React.FC = () => {
   const fetchEmployees = async () => {
     try {
       const token = localStorage.getItem('accessToken');
-      const response = await axios.get<Employee[]>('http://localhost:3002/user/', {
+      const response = await axios.get<Employee[]>('https://crmeyecare.onrender.com/user/', {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -72,7 +72,7 @@ const SalesManager: React.FC = () => {
   const fetchCustomers = async () => {
     try {
       const token = localStorage.getItem('accessToken');
-      const response = await axios.get<Customer[]>('http://localhost:3002/patients', {
+      const response = await axios.get<Customer[]>('https://crmeyecare.onrender.com/patients', {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -86,7 +86,7 @@ const SalesManager: React.FC = () => {
   const fetchServices = async () => {
     try {
       const token = localStorage.getItem('accessToken');
-      const response = await axios.get<Service[]>('http://localhost:3002/services', {
+      const response = await axios.get<Service[]>('https://crmeyecare.onrender.com/services', {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -105,7 +105,7 @@ const SalesManager: React.FC = () => {
   const handleDelete = async (id: number) => {
     try {
       const token = localStorage.getItem('accessToken');
-      await axios.delete(`http://localhost:3002/sales/${id}`, {
+      await axios.delete(`https://crmeyecare.onrender.com/sales/${id}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -123,14 +123,14 @@ const SalesManager: React.FC = () => {
     try {
       if (isEditing && formState) {
         // Update existing sale
-        await axios.put(`http://localhost:3002/sales/${formState.id}`, formState, {
+        await axios.put(`https://crmeyecare.onrender.com/sales/${formState.id}`, formState, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
         });
       } else if (formState) {
         // Create new sale
-        await axios.post('http://localhost:3002/sales', formState, {
+        await axios.post('https://crmeyecare.onrender.com/sales', formState, {
           headers: {
             Authorization: `Bearer ${token}`,
           },

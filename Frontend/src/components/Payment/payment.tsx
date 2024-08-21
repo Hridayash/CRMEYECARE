@@ -9,7 +9,7 @@ const Payments = () => {
 
 
   useEffect(() => {
-    axios.get('http://localhost:3002/payment')
+    axios.get('https://crmeyecare.onrender.com/payment')
       .then(response => {
         setPayments(response.data);
       })

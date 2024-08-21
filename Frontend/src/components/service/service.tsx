@@ -23,7 +23,7 @@ const ServicesManager: React.FC = () => {
   const fetchServices = async () => {
     try {
       const token = localStorage.getItem('accessToken');
-      const response = await axios.get<Service[]>('http://localhost:3002/services', {
+      const response = await axios.get<Service[]>('https://crmeyecare.onrender.com/services', {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -42,7 +42,7 @@ const ServicesManager: React.FC = () => {
   const handleDelete = async (id: number) => {
     try {
       const token = localStorage.getItem('accessToken');
-      await axios.delete(`http://localhost:3002/services/${id}`, {
+      await axios.delete(`https://crmeyecare.onrender.com/services/${id}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -60,14 +60,14 @@ const ServicesManager: React.FC = () => {
     try {
       if (isEditing && formState) {
         // Update existing service
-        await axios.put(`http://localhost:3002/services/${formState.id}`, formState, {
+        await axios.put(`https://crmeyecare.onrender.com/services/${formState.id}`, formState, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
         });
       } else {
         // Create new service
-        await axios.post('http://localhost:3002/services', formState, {
+        await axios.post('https://crmeyecare.onrender.com/services', formState, {
           headers: {
             Authorization: `Bearer ${token}`,
           },

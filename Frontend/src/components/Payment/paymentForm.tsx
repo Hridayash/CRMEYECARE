@@ -51,7 +51,7 @@ const PaymentForm: React.FC = () => {
     }
   
     try {
-      const response = await axios.post('http://localhost:3002/payment/create-payment-intent', {
+      const response = await axios.post('https://crmeyecare.onrender.com/payment/create-payment-intent', {
         amount: form.amount,
         currency: form.currency,
         appointmentId: form.appointmentId,

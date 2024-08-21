@@ -23,7 +23,7 @@ const Doctors: React.FC = () => {
   const fetchDoctors = async () => {
     try {
       const token = localStorage.getItem('accessToken');
-      const response = await axios.get<Doctor[]>('http://localhost:3002/doctors', {
+      const response = await axios.get<Doctor[]>('https://crmeyecare.onrender.com/doctors', {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -56,7 +56,7 @@ const Doctors: React.FC = () => {
       if (editingDoctor) {
         // Update existing doctor
         response = await axios.put<Doctor>(
-          `http://localhost:3002/doctors/${editingDoctor.id}`,
+          `https://crmeyecare.onrender.com/doctors/${editingDoctor.id}`,
           formData,
           { headers: { Authorization: `Bearer ${token}` } }
         );
@@ -68,7 +68,7 @@ const Doctors: React.FC = () => {
       } else {
         // Add new doctor
         response = await axios.post<Doctor>(
-          'http://localhost:3002/doctors',
+          'https://crmeyecare.onrender.com/doctors',
           formData,
           { headers: { Authorization: `Bearer ${token}` } }
         );
@@ -86,7 +86,7 @@ const Doctors: React.FC = () => {
   const handleDelete = async (id: number) => {
     try {
       const token = localStorage.getItem('accessToken');
-      await axios.delete(`http://localhost:3002/doctors/${id}`, {
+      await axios.delete(`https://crmeyecare.onrender.com/doctors/${id}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

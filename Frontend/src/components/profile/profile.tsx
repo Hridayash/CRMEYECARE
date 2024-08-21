@@ -31,7 +31,7 @@ const Profile = () => {
   const fetchProfileData = async () => {
     try {
       const token = localStorage.getItem('accessToken');
-      const response = await axios.get<ProfileData>('http://localhost:3002/profile', {
+      const response = await axios.get<ProfileData>('https://crmeyecare.onrender.com/profile', {
         headers: {
           Authorization: `Bearer ${token}`
         }
@@ -85,7 +85,7 @@ const Profile = () => {
   
       if (profileData.id) {
         // Update existing profile
-        response = await axios.put<ProfileData>(`http://localhost:3002/profile/${profileData.id}`, profileData, {
+        response = await axios.put<ProfileData>(`https://crmeyecare.onrender.com/profile/${profileData.id}`, profileData, {
           headers: {
             Authorization: `Bearer ${token}`
           }
@@ -94,7 +94,7 @@ const Profile = () => {
         alert('Profile updated successfully!');
       } else {
         // Create new profile
-        response = await axios.post<ProfileData>('http://localhost:3002/profile', profileData, {
+        response = await axios.post<ProfileData>('https://crmeyecare.onrender.com/profile', profileData, {
           headers: {
             Authorization: `Bearer ${token}`
           }
@@ -118,7 +118,7 @@ const Profile = () => {
       return;
     }
 
-    axios.post('http://localhost:3002/login/logout', {}, {
+    axios.post('https://crmeyecare.onrender.com/login/logout', {}, {
       headers: { Authorization: `Bearer ${token}` }
     })
     .then(() => {
