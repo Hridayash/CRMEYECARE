@@ -1,0 +1,106 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id       Int       @id @default(autoincrement())
+  email    String    @unique
+  username String    @unique
+  password String
+  profiles Profile[]
+  Sales Sales[]
+  position String?
+  department String?
+  phone String?
+  address String?
+  hireDate String?
+}
+
+model Profile {
+  id                   Int      @id @default(autoincrement())
+  groupName            String
+  contactName          String
+  contactEmail         String   @unique
+  contactPhone         String
+  demographics         String
+  groupSize            String
+  specificRequirements String
+  createdAt            DateTime @default(now())
+  updatedAt            DateTime @updatedAt
+  userId               Int
+  user                 User     @relation(fields: [userId], references: [id] , onDelete: Cascade)
+}
+
+model Patient {
+  id     Int    @id @default(autoincrement())
+  name   String
+  age    Int
+  gender String
+  email String  ?
+  phone String ?
+  address String ?
+  Sales Sales[]
+
+  Appointment Appointment[]
+}
+
+model Doctor {
+  id           Int           @id @default(autoincrement())
+  name         String
+  speciality   String
+  appointments Appointment[]
+}
+
+model Appointment {
+  id        Int       @id @default(autoincrement())
+  date      DateTime?
+  doctor    Doctor    @relation(fields: [doctorId], references: [id] ,  onDelete: Cascade)
+  doctorId  Int
+  patient   Patient?  @relation(fields: [patientId], references: [id] ,  onDelete: Cascade)
+  patientId Int?
+  createdAt DateTime  @default(now())
+  updatedAt DateTime ?  @updatedAt
+  Payment   Payment[]
+}
+
+model Payment {
+  id            Int         @id @default(autoincrement())
+  amount        Float
+  currency      String
+  status        String?
+  appointment   Appointment @relation(fields: [appointmentId], references: [id] ,  onDelete: Cascade)
+  appointmentId Int
+  createdAt     DateTime    @default(now())
+  updatedAt     DateTime    @updatedAt
+}
+
+model Services {
+  id Int @id @default(autoincrement())
+  name String
+  description String
+  price Int
+  duration String
+}
+
+model Sales {
+  id Int @id @default(autoincrement())
+  employeeId Int
+  customerId Int
+  serviceId Int  @default(autoincrement())
+  date DateTime
+  serviceDuration Int
+  totalAmount Int
+  user User @relation(fields: [employeeId] , references: [id] , onDelete: Cascade)
+  customer Patient @relation(fields: [customerId] , references: [id] , onDelete: Cascade)
+}
