@@ -3,7 +3,7 @@ const cors = require("cors");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 const dotenv = require("dotenv");
-const { blacklist, authenticateToken } = require('../middleware/authMiddleware');
+const { blacklist, authenticateToken } = require('../middleware/authMiddleware.js');
 const { PrismaClient } = require('@prisma/client');
 
 const prisma = new PrismaClient();
