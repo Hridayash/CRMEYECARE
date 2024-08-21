@@ -13,7 +13,7 @@ dotenv.config();
 LoginRouter.use(cors());
 
 // Log in user and generate token
-LoginRouter.post('/', authenticateToken ,async (req, res) => {
+LoginRouter.post('/',async (req, res) => {
     const { email, password } = req.body;
 
     try {

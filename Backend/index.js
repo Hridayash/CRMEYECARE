@@ -14,7 +14,7 @@ const paymentRouter = require('./Routes/payment')
 const dashboardRouter = require('./Routes/dashboard')
 const serviceRouter = require('./Routes/services')
 const salesRouter = require('./Routes/sales')
-const { authenticateToken } = require('../middleware/authMiddleware.js');
+
 // Initialize app and Prisma client
 dotenv.config();
 const app = express();
