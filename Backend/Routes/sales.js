@@ -1,7 +1,7 @@
 // salesRoutes.js
 const express = require('express');
 const { PrismaClient } = require('@prisma/client');
-const { authenticateToken } = require('../middleware/authMiddleware');
+const { authenticateToken } = require('../Middleware/authMiddleware');
 const router = express.Router();
 
 const prisma = new PrismaClient();
