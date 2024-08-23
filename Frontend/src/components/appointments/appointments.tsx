@@ -135,9 +135,9 @@ const Appointments = () => {
     }
   };
 
-  const handleRescheduleClick = (appointment: Appointment) => {
-    setRescheduleData({ id: appointment.id, date: appointment.date });
-  };
+  // const handleRescheduleClick = (appointment: Appointment) => {
+  //   setRescheduleData({ id: appointment.id, date: appointment.date });
+  // };
 
   const handleRescheduleChange = (e: ChangeEvent<HTMLInputElement>) => {
     setRescheduleData((prev) => (prev ? { ...prev, date: e.target.value } : null));

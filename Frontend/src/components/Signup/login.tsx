@@ -54,7 +54,7 @@ export default function Login() {
                     <div className="space-y-4">
                         <div>
                             <label htmlFor="email" className="block text-sm font-medium text-gray-700">
-                                Email
+                                Email (try: test@email.com)
                             </label>
                             <input
                                 id="email"
@@ -69,7 +69,7 @@ export default function Login() {
                         </div>
                         <div>
                             <label htmlFor="password" className="block text-sm font-medium text-gray-700">
-                                Password
+                                Password (try: test@123)
                             </label>
                             <input
                                 id="password"
@@ -97,7 +97,7 @@ export default function Login() {
                         Log In
                     </button>
                     <div className="text-center mt-4">
-                        <Link to="/" className="text-sm text-blue-500 hover:underline">
+                        <Link to="" className="text-sm text-blue-500 hover:underline">
                             Forgot password?
                         </Link>
                     </div>
@@ -105,6 +105,7 @@ export default function Login() {
                         <Link to="/signup" className="text-sm text-blue-500 hover:underline">
                             Don't have an account?
                         </Link>
+                        <p className="text-red-400">Might take up to 50sec for first login</p>
                     </div>
                 </form>
             </div>
